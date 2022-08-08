@@ -45,15 +45,27 @@ public class StackADT
         this.size = 0;
     }
 
+    public StackNode getRoot()
+    {
+        return root;
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
 
     public boolean isEmpty()
     {
         if (size == 0)
         {
-            return true
+            return true;
         }
         else return false;
     }
+
+
 
     public void push(String val)
     {
@@ -108,23 +120,14 @@ public class StackADT
             StackNode node = root;
             for (int i = 0; i < size; i++)
             {
-                System.out.println(node.getData());
+                System.out.print(node.getData() + " ");
                 node = node.getNextNode();
             }
+            System.out.println();
         }
         else
             System.out.println("The stack is empty");
     }
-
-    public static void main(String[] args)
-    {
-        StackADT sadt = new StackADT();
-        sadt.pop();
-        sadt.print();
-    }
-
-
-
 
 
 
