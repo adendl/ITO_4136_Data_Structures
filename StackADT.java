@@ -3,20 +3,20 @@ public class StackADT
 
     public class StackNode
     {
-        private String data;
+        private char data;
         private StackNode nextNode;
 
         public StackNode()
         {
         }
 
-        public StackNode(String data)
+        public StackNode(char data)
         {
             this.data = data;
             this.nextNode = null;
         }
 
-        public String getData()
+        public char getData()
         {
             return data;
         }
@@ -26,7 +26,7 @@ public class StackADT
             return nextNode;
         }
 
-        public void setData(String data)
+        public void setData(char data)
         {
             this.data = data;
         }
@@ -67,7 +67,7 @@ public class StackADT
 
 
 
-    public void push(String val)
+    public void push(char val)
     {
         StackNode node = new StackNode();
         node.setData(val);
@@ -94,12 +94,12 @@ public class StackADT
         }
         else
         {
-            System.out.println("The stack is empty");
+            //System.out.println("The stack is empty");
             return null;
         }
     }
 
-    public String stackTop()
+    public char stackTop()
     {
         if (!isEmpty())
         {
@@ -107,9 +107,9 @@ public class StackADT
         }
         else
         {
-            System.out.println("The stack is empty");
+            //System.out.println("The stack is empty");
         }
-        return null;
+        return ' ';
     }
 
     public void print()
@@ -126,7 +126,9 @@ public class StackADT
             System.out.println();
         }
         else
-            System.out.println("The stack is empty");
+        {
+            //System.out.println("The stack is empty");
+    }
     }
 
 
