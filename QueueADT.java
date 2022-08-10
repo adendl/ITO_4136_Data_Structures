@@ -28,31 +28,27 @@ public class QueueADT
         return stack2;
     }
 
-    public void enqueue()
+    public void enqueue(char theChar)
     {
         while (!getStack1().isEmpty())
         {
             getStack2().push(getStack1().pop().getData());
         }
-        Random rnd = new Random();
-        String val = String.valueOf(rnd.nextInt(10));
-        getStack1().push(val);
-        System.out.println ("value added " + val);
-        
+        getStack1().push(theChar);        
         while (!getStack2().isEmpty())
         {
             getStack1().push(getStack2().pop().getData());
         }
     }
 
-    public String dequeue()
+    public char dequeue()
     {
         if (getStack1().isEmpty())
         {
-            System.out.println("The queue is empty");
+            //System.out.println("The queue is empty");
         }
 
-        String dequeued = getStack1().stackTop();
+        char dequeued = getStack1().stackTop();
         getStack1().pop();
         return dequeued;
     }
@@ -75,11 +71,11 @@ public class QueueADT
         getStack1().print();
     }
 
-    public String queueFront()
+    public char queueFront()
     {
         if (getStack1().isEmpty())
         {
-            System.out.println("The queue is empty");
+            //System.out.println("The queue is empty");
         }
         return getStack1().stackTop();
     }
