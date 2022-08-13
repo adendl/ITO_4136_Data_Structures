@@ -1,8 +1,7 @@
 public class StackADT
 {
-
     public class StackNode
-    {
+    { // inner class that represents an individual node
         private char data;
         private StackNode nextNode;
 
@@ -57,7 +56,7 @@ public class StackADT
 
 
     public boolean isEmpty()
-    {
+    { // checks the size of list, this is incremented and decremented by the push & pop methods
         if (size == 0)
         {
             return true;
@@ -65,7 +64,36 @@ public class StackADT
         else return false;
     }
 
+    public StackNode pop()
+    {
+        if (!isEmpty())
+        { // only pop if the list is not empty
+            StackNode prevNode = root;
+            root = root.getNextNode();
+            size--; //decrement size of the list
+            return prevNode;
+        }
+        else
+        {
+            System.out.println("The stack is empty");
+            return null;
+        }
+    }
 
+    public void print()
+    {
+        System.out.println("The stack has the following elements:");
+        if (root != null)
+        {
+            StackNode node = root;
+            for (int i = 0; i < size; i++)
+            { //traverse through the list, printing each element in the list
+                System.out.print(node.getData() + " ");
+                node = node.getNextNode();
+            }
+            System.out.println();
+        }
+    }
 
     public void push(char val)
     {
@@ -80,24 +108,9 @@ public class StackADT
             node.setNextNode(root);
         }
         root = node;
-        size++;
+        size++; //increment size of the list
     }
 
-    public StackNode pop()
-    {
-        if (!isEmpty())
-        {
-            StackNode prevNode = root;
-            root = root.getNextNode();
-            size--;
-            return prevNode;
-        }
-        else
-        {
-            //System.out.println("The stack is empty");
-            return null;
-        }
-    }
 
     public char stackTop()
     {
@@ -107,30 +120,8 @@ public class StackADT
         }
         else
         {
-            //System.out.println("The stack is empty");
+            return ' ';
         }
-        return ' ';
     }
-
-    public void print()
-    {
-        System.out.println("The stack has the following elements:");
-        if (root != null)
-        {
-            StackNode node = root;
-            for (int i = 0; i < size; i++)
-            {
-                System.out.print(node.getData() + " ");
-                node = node.getNextNode();
-            }
-            System.out.println();
-        }
-        else
-        {
-            //System.out.println("The stack is empty");
-    }
-    }
-
-
 
 }
