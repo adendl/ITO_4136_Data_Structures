@@ -14,9 +14,9 @@ public class InfixToPostfix
 
     public String convertToPostfix(String exp)
     {
+        System.out.println("Infix input is: " + exp);
         if (isValid(exp)) //check if the string is valid, call isValid method
         {
-        System.out.println("Infix input is: " + exp);
         for (int i = 0; i<exp.length(); ++i)
         {
             char c = exp.charAt(i);
@@ -115,6 +115,15 @@ public class InfixToPostfix
                 System.out.println("Invalid Character");
                 return false;
             }
+            if (i > 0)
+            { // only apply this for where i = 1 or higher to stop out of bounds exception
+                if (isOperator(exp.charAt(i)) && isOperator(exp.charAt(i-1)))
+                { // check if two operators next to eachother
+                    System.out.println("Extra Operators");
+                    return false;
+                }
+            }
+            
         }
         if (parenthesis1 != parenthesis2)
         { //check if the number of '(' matches number of ')'
@@ -157,9 +166,9 @@ public class InfixToPostfix
         System.out.println(exp1);
         String exp2 = convertToPostfix("(9-2)*(3+5)-(2^3)+(2*3*5)"); //sample data 2 - valid and good
         System.out.println(exp2);
-        String exp3 = convertToPostfix("(1 + 5))*5+(8-1)+1+2+3+4+5"); //sample data 3 - invalid, missing parenthesis
+        String exp3 = convertToPostfix("(1+5))*5+(8-1)+1+2+3+4+5"); //sample data 3 - invalid, extra right parenthesis
         System.out.println(exp3);
-        String exp4 = convertToPostfix("10+20*3*5^2+2+4+8*1*2a"); //sample data 4 - invalid, contains alphabetical character
+        String exp4 = convertToPostfix("+-1+2*3*5^2+2+4+8*1^7+"); //sample data 4 - invalid, contains multiple operators side by side
         System.out.println(exp4);
     }
 
