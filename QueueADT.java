@@ -1,9 +1,6 @@
-import java.util.*;
-
 public class QueueADT
 {
-
-    private StackADT stack1;
+    private StackADT stack1; //this class consists of two stacksADT
     private StackADT stack2;
 
     public QueueADT()
@@ -28,26 +25,29 @@ public class QueueADT
         return stack2;
     }
 
+    /**stack 1 and 2 are reverse of eachother, this way we can convert a stack which is
+    first in last out to a queue which is first in first out**/
     public void enqueue(char theChar)
-    {
+    { 
         while (!getStack1().isEmpty())
         {
-            getStack2().push(getStack1().pop().getData());
+            getStack2().push(getStack1().pop().getData()); //adding the popped value from stack1 to stack2
         }
-        getStack1().push(theChar);        
+        getStack1().push(theChar); //adding the inputted character to stack 1 (our queue) 
+              
         while (!getStack2().isEmpty())
         {
-            getStack1().push(getStack2().pop().getData());
+            getStack1().push(getStack2().pop().getData()); //adding popped value form stack 2 to stack 1
         }
     }
 
+    /** here we remove the first element from stack1, which is reverse of stack2**/
     public char dequeue()
     {
         if (getStack1().isEmpty())
         {
-            //System.out.println("The queue is empty");
+            System.out.println("The queue is empty");
         }
-
         char dequeued = getStack1().stackTop();
         getStack1().pop();
         return dequeued;
@@ -75,7 +75,7 @@ public class QueueADT
     {
         if (getStack1().isEmpty())
         {
-            //System.out.println("The queue is empty");
+            System.out.println("The queue is empty");
         }
         return getStack1().stackTop();
     }
